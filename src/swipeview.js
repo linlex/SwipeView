@@ -224,6 +224,22 @@ var SwipeView = (function (window, document) {
 			}
 			
 			this.__flip();
+
+			// Hide the next page if we decided to disable looping
+			if (!this.options.loop) {
+				//reset all pages visibillity
+				this.masterPages[0].style.visibility = '';
+				this.masterPages[1].style.visibility = '';
+				this.masterPages[2].style.visibility = '';
+				//if current page firs or last we get number of masterpage an hide it
+				if (this.page == 0) {
+					this.masterPages[0].style.visibility = 'hidden';
+				}
+				if (this.page == this.options.numberOfPages - 1) {
+					nextPage = this.currentMasterPage <= 1 ? this.currentMasterPage + 1 : 0;
+					this.masterPages[nextPage].style.visibility = 'hidden';
+				}
+			}
 		},
 		
 		next: function () {
