@@ -392,7 +392,7 @@ var SwipeView = (function (window, document) {
 
 			// Check if we exceeded the snap threshold
 			if (dist < this.snapThreshold) {
-				this.slider.style[transitionDuration] = Math.floor(300 * dist / this.snapThreshold) + 'ms';
+				this.slider.style[transitionDuration] = Math.abs(point.pageX - this.startX) + 'ms';
 				this.__pos(-this.page * this.pageWidth);
 				return;
 			}
